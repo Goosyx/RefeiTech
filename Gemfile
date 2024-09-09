@@ -8,6 +8,7 @@ gem 'rails', '6.1.7'
 
 # Use PostgreSQL as the database for Active Record
 
+gem 'rqrcode'
 gem "pg", "~> 1.2"
 
 gem 'rack-cors', require: 'rack/cors'
