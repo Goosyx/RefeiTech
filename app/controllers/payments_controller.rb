@@ -136,7 +136,8 @@ class PaymentsController < ApplicationController
         users_ra: current_user.ra,
         products_id: item["id"],
         quantity: item["quantity"], 
-        date_payment: Time.now
+        date_payment: Time.now,
+        purchases: item["quantity"]
       )
     end
   end

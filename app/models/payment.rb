@@ -8,6 +8,7 @@ class Payment < ApplicationRecord
   validates :products_id, presence: true
   validates :date_payment, presence: true
   validates :quantity, presence: true
+  validates :purchases, presence: true
 
   # Métodos de classe para validações
   def self.valid_credit_card_number?(number)
