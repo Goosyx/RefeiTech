@@ -82,6 +82,3 @@ class Payment < ApplicationRecord
     http.request(request)
   end
 end
-
-
-  
