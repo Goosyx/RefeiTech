@@ -29,4 +29,11 @@ Rails.application.routes.draw do
   post 'payment/add_balance', to: 'payments#add_balance', as: 'add_balance'
   post 'payment/get_balance', to: 'payments#get_balance', as: 'get_balance'
   post 'payment/validate', to: 'payments#validate', as: 'validate_payment'
+
+  # Rotas Purchase
+  get 'purchases', to: 'purchases#index'
+  get 'purchases/show', to: 'purchases#show'
+  post 'cart/final/add', to: 'purchases#add_to_final_cart', as: 'add_to_final_cart'
+  post 'purchases/generate', to: 'purchases#generate_qrcode'
+  post 'purchases/validate', to: 'purchases#validate_qrcode'
 end

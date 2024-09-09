@@ -6,7 +6,7 @@ class CreatePayments < ActiveRecord::Migration[6.1]
       t.references :products, foreign_key: true
       t.datetime :date_payment
       t.integer :quantity, null: false
-      t.boolean :confirmation, default: false, null: false
+      t.integer :purchases, null: false
 
       t.timestamps
     end
