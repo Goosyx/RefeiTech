@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2024_08_29_231041) do
     t.string "users_ra", null: false
     t.bigint "products_id"
     t.datetime "date_payment"
+    t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["products_id"], name: "index_payments_on_products_id"

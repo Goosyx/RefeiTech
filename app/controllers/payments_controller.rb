@@ -21,10 +21,10 @@ class PaymentsController < ApplicationController
 
   def create_wallet_payment
     user = User.find_by(ra: params[:ra])
-    if user && user.balance >= total_cart_value
-      user.update(balance: user.balance - total_cart_value)
-      process_payment
+    if user && user.balance >= (Payment.total_cart_value(session[:cart] || []))
+      user.update(balance: user.balance - (Payment.total_cart_value(session[:cart] || [])))
       create_purchase
+      process_payment
       render json: { status: 'success', message: 'Pagamento realizado com sucesso com Carteira' }, status: :ok
     else
       render json: { status: 'fail', message: 'Saldo insuficiente na carteira ou usuário não encontrado' }, status: :unprocessable_entity
@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
     when 'credit_card'
       card_number = params[:card_number]
       card_expiry = params[:expiry_date]
-      card_cvc = params[:cvv]
+      card_cvv = params[:cvv]
   
       if Payment.valid_credit_card_number?(card_number) && Payment.valid_expiry_date?(card_expiry)
         render json: { status: 'success', message: 'Cartão de crédito válido' }, status: :ok
@@ -86,7 +86,7 @@ class PaymentsController < ApplicationController
     request = Net::HTTP::Get.new(url)
     request["Authorization"] = 'Q2xpZW50X0lkXzU2NGEwZDgzLTg0MDMtNDMxNS05MzMyLWUzNWJjNjY3YjFhZjpDbGllbnRfU2VjcmV0X25qN1pDcHQzWVIrVUNhV1RONFNsV3hXSnpNajlZeExoekxnWC9CVDVGUG89' # Substitua com seu app_id
 
-    response = send_request(url, request)
+    response = Payment.send_request(url, request)
 
     if response.is_a?(Net::HTTPSuccess)
       handle_pix_response(JSON.parse(response.body))
@@ -100,8 +100,8 @@ class PaymentsController < ApplicationController
 
     case charge_status
     when 'COMPLETED'
-      process_payment
       create_purchase
+      process_payment
       render json: { status: 'success', message: 'Pix pago com sucesso' }, status: :ok
     when 'ACTIVE'
       render json: { status: 'fail', message: 'Pix não efetuado' }, status: :ok
@@ -113,13 +113,13 @@ class PaymentsController < ApplicationController
   def create_credit_card_payment
     card_number = params[:card_number]
     card_expiry = params[:card_expiry]
-    card_cvc = params[:card_cvc]
+    card_cvv = params[:card_cvv]
 
     if Payment.valid_credit_card_number?(card_number) && Payment.valid_expiry_date?(card_expiry)
       response = { success: true }
       if response[:success] 
-        process_payment
         create_purchase
+        process_payment
         render json: { status: 'success', message: 'Pagamento realizado com sucesso com Cartão de Crédito' }, status: :ok
       else
         render json: { status: 'fail', message: 'Falha ao processar pagamento' }, status: :unprocessable_entity
@@ -128,7 +128,18 @@ class PaymentsController < ApplicationController
       render json: { status: 'fail', message: 'Número do cartão de crédito ou data de validade inválidos' }, status: :unprocessable_entity
     end
   end
-
+  
+  def create_purchase
+    cart = session[:cart] || []
+    cart.each do |item|
+      Payment.create(
+        users_ra: current_user.ra,
+        products_id: item["id"],
+        quantity: item["quantity"], 
+        date_payment: Time.now
+      )
+    end
+  end
   def process_payment
     cart = session[:cart] || []
     cart.each do |item|
@@ -140,31 +151,6 @@ class PaymentsController < ApplicationController
         render json: { status: 'fail', message: "Quantidade insuficiente para o produto #{product&.name}" }, status: :unprocessable_entity
         return
       end
-    end
-  end
-  def create_purchase
-    cart = session[:cart] || []
-    cart.each do |item|
-      product = Product.find_by(id: item["id"])
-      Payment.create(
-        user_id: current_user.id,
-        product_id: item["id"],
-        quantity: item["quantity"],
-        total_price: item["quantity"] * (product&.preco || 0)
-      )
-    end
-  end
-  def send_request(url, request)
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = url.scheme == 'https'
-    http.request(request)
-  end
-
-  def total_cart_value
-    cart = session[:cart] || []
-    cart.reduce(0) do |total, item|
-      product = Product.find_by(id: item['id'])
-      total + (product&.price.to_f * item['quantity'].to_f)
     end
   end
 end

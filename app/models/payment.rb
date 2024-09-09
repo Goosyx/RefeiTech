@@ -1,12 +1,13 @@
 class Payment < ApplicationRecord
   # Associações 
-  belongs_to :product, foreign_key: 'product_id'
+  belongs_to :product, foreign_key: 'products_id'
   belongs_to :user, foreign_key: 'users_ra', primary_key: 'ra'
  
   # Validações
   validates :users_ra, presence: true
-  validates :product_id, presence: true
+  validates :products_id, presence: true
   validates :date_payment, presence: true
+  validates :quantity, presence: true
 
   # Métodos de classe para validações
   def self.valid_credit_card_number?(number)
@@ -74,6 +75,10 @@ class Payment < ApplicationRecord
       { status: 'fail', message: "Falha ao criar cobrança: #{response.body}" }
     end
   end
-end
 
-  
+  def self.send_request(url, request)
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = url.scheme == 'https'
+    http.request(request)
+  end
+end
