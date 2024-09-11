@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   get 'purchases', to: 'purchases#index'
   get 'purchases/show', to: 'purchases#show'
   post 'cart/final/add', to: 'purchases#add_to_final_cart', as: 'add_to_final_cart'
+  get 'purchases/show_cart', to: 'purchases#show_cart', as: 'show_final_cart'
+  delete 'purchases/remove_product/:product_id', to: 'purchases#remove_product', as: 'remove_final_product'
+  delete 'purchases/clear_cart', to: 'purchases#clear_cart', as: 'clear_final_cart'
   post 'purchases/generate', to: 'purchases#generate_qrcode'
   post 'purchases/validate', to: 'purchases#validate_qrcode'
 end
