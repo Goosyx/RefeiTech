@@ -1,7 +1,7 @@
 # Bem-Vindo ao RefeiTech!
 
 ## Oque é o RefeiTech?
-RefeiTech é um aplicativo para a compra de fichas da cantina de forma remota, idealizado para a matéria de Engenharia de Software - UTFPR 
+RefeiTech é um aplicativo para a compra de fichas da cantina de forma remota, idealizado para a matéria de Engenharia de Software - UTFPR-CM utilizando o padrão Facade Pattern para fornecer uma interface e agrupando diversas operações em uma única interface.
 
 ## Getting Started
 ### Para o funcionamento da aplicação é necessário que seja instalado previamente a Linguagem Ruby na versão 3.3.4, framework Rails na versão 6.1.7 e PostgreSQL.
