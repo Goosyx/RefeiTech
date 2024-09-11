@@ -10,6 +10,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     end
 
     add_index :users, :ra, unique: true
-
+    User.create!(ra: 'teste', password: '123456', balance: "100") if table_exists?(:users)
   end
 end
