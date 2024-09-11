@@ -154,29 +154,12 @@ class PurchasesController < ApplicationController
 
   # Valida o QR code e o RA do usuário
   def validate_qrcode
-    product_id = params[:product_id]  # Recebe o product_id do frontend
-    purchases = params[:purchases].to_i  # Recebe a quantidade de compras do frontend e converte para inteiro
-    user = params [:user_ra] # Busca o usuário pela sessão para garantir o RA atual
+    status = params[:status] # O frontend envia 'success' ou 'fail'
   
-    if product_id.present? && purchases > 0 && user.present?
-      payment = Payment.find_by(products_id: product_id, users_ra: user_ra)
-  
-      if payment && payment.purchases >= purchases
-        # Subtrai a quantidade usada
-        new_quantity = payment.purchases - purchases
-  
-        if new_quantity > 0
-          payment.update(purchases: new_quantity)
-        else
-          payment.update(purchases: 0)
-        end
-  
-        render json: { status: 'success' }, status: :ok
-      else
-        render json: { status: 'fail' }, status: :unprocessable_entity
-      end
+    if status == 'success' || status == 'fail'
+      render json: { status: status }, status: :ok
     else
       render json: { status: 'fail' }, status: :unprocessable_entity
     end
   end
-end  
+end
