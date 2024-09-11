@@ -55,7 +55,7 @@ class PurchasesController < ApplicationController
       return
     end
     
-    # Atualiza o carrinho baseado no `product_id`
+    # Atualiza o carrinho baseado no product_id
     final_cart = session[:final_cart_session] || []
     final_cart << { 
       'product_id' => product.id, 
@@ -154,51 +154,29 @@ class PurchasesController < ApplicationController
 
   # Valida o QR code e o RA do usuário
   def validate_qrcode
-    scanned_data = params[:qrcode_data]
-    user = User.find_by(id: session[:user_id]) # Busca o usuário pela sessão para garantir o RA atual
-
-    if scanned_data.present? && user.present?
-      user_ra = user.ra # Pegando o RA do usuário da sessão atual
-
-      begin
-        decoded_data = JSON.parse(scanned_data)
-        final_cart = decoded_data['cart']
-        scanned_ra = decoded_data['user_ra'] # O RA do usuário presente no QR code
-
-        # Verifica se o RA escaneado corresponde ao RA da sessão
-        if scanned_ra != user_ra
-          render json: { status: 'fail', message: 'RA do QR Code não corresponde ao usuário atual' }, status: :unprocessable_entity
-          return
-        end
-      rescue JSON::ParserError => e
-        Rails.logger.error("Erro ao decodificar QR Code: #{e.message}")
-        render json: { status: 'fail', message: 'Erro ao decodificar QR Code' }, status: :unprocessable_entity
-        return
-      end
-
-      final_cart.each do |item|
-        product = Product.find_by(id: item["product_id"])
-        payment = Payment.find_by(products_id: product.id, users_ra: user_ra)
-
-        if payment && payment.purchases >= item["purchases"]
-          # Subtrai a quantidade usada
-          new_quantity = payment.purchases - item["purchases"]
-
-          if new_quantity > 0
-            payment.update(purchases: new_quantity)
-          else
-            payment.destroy
-          end
+    product_id = params[:product_id]  # Recebe o product_id do frontend
+    purchases = params[:purchases].to_i  # Recebe a quantidade de compras do frontend e converte para inteiro
+    user = params [:user_ra] # Busca o usuário pela sessão para garantir o RA atual
+  
+    if product_id.present? && purchases > 0 && user.present?
+      payment = Payment.find_by(products_id: product_id, users_ra: user_ra)
+  
+      if payment && payment.purchases >= purchases
+        # Subtrai a quantidade usada
+        new_quantity = payment.purchases - purchases
+  
+        if new_quantity > 0
+          payment.update(purchases: new_quantity)
         else
-          Rails.logger.error("Pagamento não encontrado ou quantidade insuficiente: #{item['product_id']}")
-          render json: { status: 'fail', message: "Pagamento não encontrado ou quantidade insuficiente para o produto #{item['product_id']}" }, status: :unprocessable_entity
-          return
+          payment.update(purchases: 0)
         end
+  
+        render json: { status: 'success' }, status: :ok
+      else
+        render json: { status: 'fail' }, status: :unprocessable_entity
       end
-
-      render json: { status: 'success', message: 'QR Code validado e pagamentos atualizados' }, status: :ok
     else
-      render json: { status: 'fail', message: 'Dados do QR Code ou RA do usuário não fornecidos' }, status: :unprocessable_entity
+      render json: { status: 'fail' }, status: :unprocessable_entity
     end
   end
-end
+end  
