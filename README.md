@@ -36,7 +36,7 @@ $ git clone https://github.com/Goosyx/RefeiTech.git
     ```
 5. Inicialize a aplicação utilizando o comando:
    ```
-   rails s
+   rails s -b 0.0.0.0
    ```
 
 
@@ -130,3 +130,39 @@ apt-get install nano
 ```
 nano (arquivo_de_teste_spec.rb)
 ```
+
+## Front-End
+### Para o funcionamento do Front-End é necessário que seja instalado o Android Emulator para debugar o aplicativo.
+
+1. Abre o código e vá nas pastas:
+```
+/lib/services/API_services
+```
+
+```
+/lib/services/cookie_services
+```
+
+2. Vai precisar do IP da máquina para rodar como servidor.
+
+
+3. Pegar o IP da máquina. colocar no $baseUrl, que está dentro das pastas API_services e cookie_services:
+
+   3.1 caso queira rodar em um dispositivo mobile vai precisar de um cabo conectando o dispositivo com o servidor.
+
+
+   3.2 Caso queira rodar em um emulador, o $baseUrl será: 
+      ```
+      10.0.2.2
+      ```
+
+
+6. Selecionar o dispositivo onde você vai debugar o aplicativo.
+
+
+7. Após tudo configurado, você deverá abrir o caminho do diretório:
+```
+flutter run
+```
+
+6. Depois de debugado, o dispositivo movél pode ser desconectado do cabo ligado ao servidor.
