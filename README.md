@@ -1,7 +1,7 @@
 # Bem-Vindo ao RefeiTech!
 
 ## Oque é o RefeiTech?
-RefeiTech é um aplicativo para a compra de fichas da cantina de forma remota, idealizado para a matéria de Engenharia de Software - UTFPR-CM utilizando o padrão Facade Pattern para fornecer uma interface e agrupando diversas operações em uma única interface.
+RefeiTech é um aplicativo para a compra de fichas da cantina de forma remota, idealizado para a disciplina de Engenharia de Software - UTFPR-CM utilizando o padrão Facade Pattern para fornecer uma interface e agrupando diversas operações em uma única interface.
 
 # Getting Started
 ### Para o funcionamento da aplicação é necessário que seja instalado previamente a Linguagem Ruby na versão 3.3.4, framework Rails na versão 6.1.7 e PostgreSQL.
@@ -81,8 +81,11 @@ flutter run
 
 ## COMO RODAR OS TESTES:
 
- Subir o docker do backend (em segundo plano para ainda conseguir usar o terminal):
+ Subir o docker do backend em segundo plano para ainda conseguir utilizar o terminal:
+ 
+```
 docker-compose up -d —build
+```
 
  Acessar o container do backend:
 ```
@@ -103,7 +106,7 @@ bundle exec rspec --format documentation
 
 ### Caso haja migrações pendentes:
 
-saia do container bash e entre no /bin/bash
+Saia do container bash e entre na sessão /bin/bash do container backend:
 
 ```
 exit
@@ -124,7 +127,7 @@ chmod +x bin/rails
 ruby -v 
 ```
 
-Verificar caminho da pasta env ruby:
+Verificar caminho da pasta _env ruby_:
 
 ```
 head -n 1 bin/rails
@@ -142,7 +145,11 @@ Rodar as migrações:
 bin/rails db:migrate
 ```
 
-Voltar para o bash do backend:
+Voltar para a sessão bash do backend:
+
+```
+exit
+```
 
 ```
 docker-compose exec backend bash
@@ -154,11 +161,11 @@ Realizar os testes novamente:
 bundle exec rspec --format documentation
 ```
 
-(feito isso os testes serão exibidos)
+_Feito isso os testes serão exibidos_
 
 Caso deseje visualizar os códigos de teste via container (necessário instalar editor de texto):
 
-Dentro do container backend bash (Usando o exemplo do nano):
+Dentro do container, na sessão backend bash (Usando exemplo do nano):
 
 ```
 apt-get update
@@ -166,6 +173,15 @@ apt-get update
 ```
 apt-get install nano
 ```
+Viaje até a pasta _spec_ para visualizar os arquivos de teste: 
 ```
-nano (arquivo_de_teste_spec.rb)
+cd spec
+```
+
+```
+ls
+```
+
+```
+nano (_arquivo_de_teste_spec.rb)
 ```
