@@ -49,7 +49,7 @@ $ git clone https://github.com/Goosyx/RefeiTech.git
 ```
 
 ```
-/lib/services/cookie_services
+/lib/services/cookie_api
 ```
 
 2. Vai precisar do IP da máquina para rodar como servidor.
