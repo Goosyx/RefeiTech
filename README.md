@@ -45,11 +45,11 @@ $ git clone https://github.com/Goosyx/RefeiTech.git
 
 1. Abre o código e vá nas pastas:
 ```
-/lib/services/API_services
+/lib/services/api_services.dart
 ```
 
 ```
-/lib/services/cookie_api
+/lib/services/cookie_api.dart
 ```
 
 2. Vai precisar do IP da máquina para rodar como servidor.
