@@ -35,13 +35,26 @@ class ProductsController < ApplicationController
   end
   
   def destroy
-    if @product && @product.destroy
-      render json: { status: 'success', message: 'Produto removido com sucesso' }, status: :ok
-    else
-      render json: { status: 'fail', message: 'Erro ao remover produto ou produto não encontrado' }, status: :unprocessable_entity
-    end
-  end
+    # Verifica se o produto existe
+    if @product
+      # Verifica se o produto está presente na tabela 'payments'
+      payment = Payment.find_by(products_id: @product.id)
   
+      if payment
+        # Se o produto estiver vinculado a algum pagamento, bloqueia a remoção
+        render json: { status: 'fail', message: 'Produto não pode ser removido, pois está vinculado a um pagamento' }, status: :unprocessable_entity
+      elsif @product.destroy
+        # Se não estiver vinculado e a remoção for bem-sucedida
+        render json: { status: 'success', message: 'Produto removido com sucesso' }, status: :ok
+      else
+        # Caso ocorra um erro ao remover o produto
+        render json: { status: 'fail', message: 'Erro ao remover o produto' }, status: :unprocessable_entity
+      end
+    else
+      # Se o produto não for encontrado
+      render json: { status: 'fail', message: 'Produto não encontrado' }, status: :not_found
+    end
+  end  
   private
 
   def set_product
