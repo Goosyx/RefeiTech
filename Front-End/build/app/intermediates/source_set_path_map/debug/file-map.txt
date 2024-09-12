@@ -1,0 +1,28 @@
+com.example.refeitech.app-transition-1.2.0-0 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\106878295df789ba04b3c00f775b58e3\transformed\transition-1.2.0\res
+com.example.refeitech.app-recyclerview-1.1.0-1 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\267cc24c3056797ed7cfe4d96fc5f1b3\transformed\recyclerview-1.1.0\res
+com.example.refeitech.app-core-1.6.0-2 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\284a410c767ad6c7a2b0ffc8d8d85981\transformed\core-1.6.0\res
+com.example.refeitech.app-jetified-window-java-1.0.0-beta04-3 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\2a215381204751055df81b6269e717b7\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.refeitech.app-jetified-annotation-experimental-1.1.0-4 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\3d2f03fc996c2e0aa3dee5cfa3002cd1\transformed\jetified-annotation-experimental-1.1.0\res
+com.example.refeitech.app-appcompat-1.2.0-5 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\5121485cf4cfffdfbd051715d5755974\transformed\appcompat-1.2.0\res
+com.example.refeitech.app-cardview-1.0.0-6 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\57bdf9bdd5c070eb8ccb2e3da263c0c3\transformed\cardview-1.0.0\res
+com.example.refeitech.app-jetified-viewpager2-1.0.0-7 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\62fae99f55940d2254926af7935b5c6b\transformed\jetified-viewpager2-1.0.0\res
+com.example.refeitech.app-media-1.0.0-8 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\6b0474d987953096ecc6b40e9d5a11d9\transformed\media-1.0.0\res
+com.example.refeitech.app-material-1.3.0-9 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\7b6397efbe42b8c4fd21742a5f1e00ca\transformed\material-1.3.0\res
+com.example.refeitech.app-jetified-play-services-basement-17.4.0-10 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\7bb87c36836a3ba3919e0e8aea1d5b93\transformed\jetified-play-services-basement-17.4.0\res
+com.example.refeitech.app-jetified-play-services-base-17.4.0-11 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\924b9c2adb5adb33931853e2494bd014\transformed\jetified-play-services-base-17.4.0\res
+com.example.refeitech.app-coordinatorlayout-1.1.0-12 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\ac09da274b5ba7259aadcdbf5b1df7e6\transformed\coordinatorlayout-1.1.0\res
+com.example.refeitech.app-constraintlayout-2.0.1-13 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\b5ee492ca53cb318d9d1c92ea0dcafd6\transformed\constraintlayout-2.0.1\res
+com.example.refeitech.app-jetified-appcompat-resources-1.2.0-14 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\cbc5fa10ba652b117abed7c8cdc57dd2\transformed\jetified-appcompat-resources-1.2.0\res
+com.example.refeitech.app-webkit-1.11.0-15 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\e536ff8f3e9ca85a08e5179e81aaf167\transformed\webkit-1.11.0\res
+com.example.refeitech.app-jetified-window-1.0.0-beta04-16 C:\Users\Henrique Bittencourt\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\res
+com.example.refeitech.app-debug-17 C:\dev\fluttershits\refeitech\android\app\src\debug\res
+com.example.refeitech.app-main-18 C:\dev\fluttershits\refeitech\android\app\src\main\res
+com.example.refeitech.app-pngs-19 C:\dev\fluttershits\refeitech\build\app\generated\res\pngs\debug
+com.example.refeitech.app-resValues-20 C:\dev\fluttershits\refeitech\build\app\generated\res\resValues\debug
+com.example.refeitech.app-rs-21 C:\dev\fluttershits\refeitech\build\app\generated\res\rs\debug
+com.example.refeitech.app-mergeDebugResources-22 C:\dev\fluttershits\refeitech\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.refeitech.app-mergeDebugResources-23 C:\dev\fluttershits\refeitech\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.refeitech.app-merged_res-24 C:\dev\fluttershits\refeitech\build\app\intermediates\merged_res\debug
+com.example.refeitech.app-packaged_res-25 C:\dev\fluttershits\refeitech\build\flutter_barcode_scanner\intermediates\packaged_res\debug
+com.example.refeitech.app-packaged_res-26 C:\dev\fluttershits\refeitech\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
+com.example.refeitech.app-packaged_res-27 C:\dev\fluttershits\refeitech\build\webview_flutter_android\intermediates\packaged_res\debug

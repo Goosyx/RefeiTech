@@ -1,0 +1,48 @@
+name: refeitech
+description: "A new Flutter project."
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.4 <4.0.0'
+
+dependencies:
+
+
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  http: ^1.2.2
+  webview_flutter: ^4.0.0
+  flutter_barcode_scanner: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/images/background_image.png
+    - assets/images/background_image2.png
+    - assets/images/profile_picture.png
+    - assets/images/menu_image.png
+    # Example: - assets/images/background_image.jpg
+  
+  # You may not need this section if you're using Google Fonts exclusively.
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700

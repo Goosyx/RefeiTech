@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.refeitech.app-mergeDebugResources-22:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Henrique Bittencourt\\.gradle\\caches\\transforms-3\\5121485cf4cfffdfbd051715d5755974\\transformed\\appcompat-1.2.0\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

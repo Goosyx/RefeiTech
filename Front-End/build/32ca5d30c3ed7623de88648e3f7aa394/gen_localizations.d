@@ -1,0 +1,1 @@
+ C:\\dev\\fluttershits\\refeitech\\.dart_tool\\flutter_gen\\gen_l10n\\app_localizations_en.dart C:\\dev\\fluttershits\\refeitech\\.dart_tool\\flutter_gen\\gen_l10n\\app_localizations.dart:  C:\\dev\\fluttershits\\refeitech\\l10n.yaml C:\\dev\\fluttershits\\refeitech\\lib/src/localization\\app_en.arb
